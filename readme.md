@@ -36,4 +36,26 @@ For Api Access.
 
 
 
+# Generate Master and Slave Blade 
 
+### Sections
+
+1. meta
+    title, description etc
+2. style
+    for any style (after the main css file)
+3. content
+4. script
+    for any scripts (after the main js file)
+
+### Master Templates
+_/layouts_
+
+Two Layouts. The App for the frontend. The Admin for any backend related.  
+Use the elixir function to include one css and one js file
+
+**1. App**
+header and footer in _"layouts/app/"_
+
+**2. Admin**
+navbar in _"layouts/admin"_

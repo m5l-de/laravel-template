@@ -1,7 +1,7 @@
 @extends('layouts.app)
 
 @section('meta')
-    <title>Profile</title>
+    <title>Startseite</title>
 @endsection
 
 

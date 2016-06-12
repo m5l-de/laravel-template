@@ -15,14 +15,14 @@
 </head>
 <body id="app-layout">
 
-    @include('layouts.app.navbar')
+@include('layouts.admin.navbar')
 
-    @yield('content')
+@yield('content')
 
-    @include('layouts.app.footer')
+@include('layouts.app.footer')
 
-    {{-- <script src="{{ elixir('js/app.js') }}"></script> --}}
+{{-- <script src="{{ elixir('js/app.js') }}"></script> --}}
 
-    @yield('script')
+@yield('script')
 </body>
 </html>
