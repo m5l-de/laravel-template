@@ -2,19 +2,69 @@
 
 /*
 |--------------------------------------------------------------------------
-| Application Routes
+| General Routes
 |--------------------------------------------------------------------------
 |
-| Here is where you can register all of the routes for an application.
-| It's a breeze. Simply tell Laravel the URIs it should respond to
-| and give it the controller to call when that URI is requested.
+| For simple static pages
+|
+*/
+Route::auth();
+
+Route::get('/', 'PageController@home');
+
+
+/*
+|--------------------------------------------------------------------------
+| Main Routes
+|--------------------------------------------------------------------------
+|
+| For the main application routes
 |
 */
 
-Route::get('/', function () {
-    return view('welcome');
+Route::group(['middleware' => 'auth', 'namespace' => 'Main'], function () {
+    Route::get('/main', 'MainController@index');
 });
 
-Route::auth();
 
-Route::get('/home', 'HomeController@index');
+/*
+|--------------------------------------------------------------------------
+| Profile Routes
+|--------------------------------------------------------------------------
+|
+| For the Profile of a user
+|
+*/
+
+Route::group(['middleware' => 'auth', 'namespace' => 'Profile', 'prefix' => 'profile'], function () {
+    Route::get('/', 'ProfileController@index');
+});
+
+
+
+/*
+|--------------------------------------------------------------------------
+| Admin Routes
+|--------------------------------------------------------------------------
+|
+| For the Admin routes
+|
+*/
+
+Route::group(['middleware' => 'admin', 'namespace' => 'Admin', 'prefix' => 'admin'], function () {
+    Route::get('/', 'AdminController@index');
+});
+
+
+/*
+|--------------------------------------------------------------------------
+| API Routes
+|--------------------------------------------------------------------------
+|
+| For the API routes
+|
+*/
+
+Route::group(['middleware' => 'auth:api', 'namespace' => 'Api', 'prefix' => 'api/v1'], function () {
+    Route::get('/', 'ApiController@index');
+});
